@@ -34,4 +34,16 @@
             Tu Step es de 2 metros en lugar de uno.
         </Descripcion>
     </Dote>
+
+        <Dote>
+        <Nombre>Ataques combinados</Nombre>
+        <Nivel>2</Nivel>
+        <Requisito>Melee mayor a 60</Requisito>
+        <Tipo>Senda</Tipo>
+        <Coste>1</Coste>
+        <Senda>Valor</Senda>
+        <Descripcion>
+            Si tienes exito en un golpe puedes propinar otro.
+        </Descripcion>
+    </Dote>
 </Dotes>
