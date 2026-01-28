@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #1e1e1e;
+    color: #eaeaea;
+    margin: 0;
+}
+
+header {
+    padding: 16px;
+    background: #2a2a2a;
+}
+
+.filters {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+input {
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+    width: 200px;
+}
+
+#kanban {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.level-separator {
+    border-bottom: 2px solid #555;
+    padding-bottom: 4px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.dote-card {
+    background: #2b2b2b;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.4);
+}
+
+.dote-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dote-name {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.stars {
+    color: gold;
+}
+
+.meta {
+    font-size: 0.85em;
+    opacity: 0.85;
+    margin-top: 4px;
+}
+
+.description {
+    margin-top: 8px;
+    font-size: 0.95em;
+}
