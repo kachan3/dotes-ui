@@ -22,4 +22,16 @@
             Desatas el poder de tu sangre ancestral aumentando tu daño.
         </Descripcion>
     </Dote>
+
+        <Dote>
+        <Nombre>Paso del Viento</Nombre>
+        <Nivel>2</Nivel>
+        <Requisito>Linaje del Viento</Requisito>
+        <Tipo>Linaje</Tipo>
+        <Coste>0</Coste>
+        <Senda>Wind Chilld</Senda>
+        <Descripcion>
+            Tu Step es de 2 metros en lugar de uno.
+        </Descripcion>
+    </Dote>
 </Dotes>
