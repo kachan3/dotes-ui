@@ -1,23 +1,39 @@
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRYA4kCfTqPqWpvm3FRr6pMz2Rq1_dZCvxuy0dA7DzyWirG6ono2mDNGHAK7QEc8ZfC83fWNlkJ1eIt/pub?output=csv";
+
 let dotesData = [];
 
-fetch("dotes.xml")
-    .then(res => res.text())
-    .then(str => new DOMParser().parseFromString(str, "text/xml"))
-    .then(xml => {
-        const dotes = [...xml.getElementsByTagName("Dote")];
+init();
 
-        dotesData = dotes.map(d => ({
-            nombre: d.getElementsByTagName("Nombre")[0].textContent,
-            nivel: parseInt(d.getElementsByTagName("Nivel")[0].textContent),
-            requisito: d.getElementsByTagName("Requisito")[0].textContent,
-            tipo: d.getElementsByTagName("Tipo")[0].textContent,
-            coste: parseInt(d.getElementsByTagName("Coste")[0].textContent),
-            senda: d.getElementsByTagName("Senda")[0].textContent,
-            descripcion: d.getElementsByTagName("Descripcion")[0].textContent
-        }));
+async function init() {
+    const response = await fetch(SHEET_URL);
+    const csvText = await response.text();
+    dotesData = csvToJson(csvText);
+    render();
+}
 
-        render();
+function csvToJson(csv) {
+    const lines = csv.split("\n").filter(l => l.trim() !== "");
+    const headers = lines[0].split(",");
+
+    return lines.slice(1).map(line => {
+        const values = line.split(",");
+
+        let obj = {};
+        headers.forEach((header, i) => {
+            obj[header.trim()] = values[i]?.trim();
+        });
+
+        return {
+            nombre: obj["Nombre"],
+            nivel: parseInt(obj["Nivel"]),
+            requisito: obj["Requisito"],
+            tipo: obj["Tipo"],
+            coste: parseInt(obj["Coste"]),
+            senda: obj["Senda"],
+            descripcion: obj["Descripcion"]
+        };
     });
+}
 
 document.getElementById("searchName").addEventListener("input", render);
 document.getElementById("searchSenda").addEventListener("input", render);
@@ -59,15 +75,14 @@ function render() {
     });
 }
 
-
 function createCard(dote) {
     const card = document.createElement("div");
     card.className = "dote-card";
 
     card.innerHTML = `
         <div class="dote-header">
-            <div class="dote-name"> ${dote.nombre} <div class="stars">${"■".repeat(dote.coste)}</div>
-            </div>
+            <div class="dote-name">${dote.nombre}</div>
+            <div class="stars">${"★".repeat(dote.coste)}</div>
         </div>
         <div class="meta">
             Nivel ${dote.nivel} | ${dote.tipo} | Senda: ${dote.senda}<br>
