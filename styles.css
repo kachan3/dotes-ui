@@ -69,3 +69,32 @@ input {
     margin-top: 8px;
     font-size: 0.95em;
 }
+.coste {
+    font-weight: bold;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.reaccion {
+    background: #4a90e2;
+    color: white;
+}
+
+.intervencion {
+    background: #e24a4a;
+    color: white;
+}
+
+.tag {
+    display: inline-block;
+    background: #444;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    margin: 4px 4px 0 0;
+}
